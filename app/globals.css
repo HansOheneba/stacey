@@ -1,26 +1,355 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@theme {
+  /* ── Brand Colors ────────────────────────────────── */
+
+  /* Bubblegum Pink */
+  --color-bubblegum-pink-50: #fce8ec;
+  --color-bubblegum-pink-100: #f9d2d9;
+  --color-bubblegum-pink-200: #f4a4b3;
+  --color-bubblegum-pink-300: #ee778d;
+  --color-bubblegum-pink-400: #e94967;
+  --color-bubblegum-pink-500: #e31c41;
+  --color-bubblegum-pink-600: #b61634;
+  --color-bubblegum-pink-700: #881127;
+  --color-bubblegum-pink-800: #5b0b1a;
+  --color-bubblegum-pink-900: #2d060d;
+  --color-bubblegum-pink-950: #200409;
+
+  /* Pitch Black (Gold tones) */
+  --color-pitch-black-50: #fffbe5;
+  --color-pitch-black-100: #fff7cc;
+  --color-pitch-black-200: #fff099;
+  --color-pitch-black-300: #ffe866;
+  --color-pitch-black-400: #ffe033;
+  --color-pitch-black-500: #ffd900;
+  --color-pitch-black-600: #ccad00;
+  --color-pitch-black-700: #998200;
+  --color-pitch-black-800: #665700;
+  --color-pitch-black-900: #332b00;
+  --color-pitch-black-950: #241e00;
+
+  /* Ghost White (Blue-violet) */
+  --color-ghost-white-50: #e5e5ff;
+  --color-ghost-white-100: #ccccff;
+  --color-ghost-white-200: #9999ff;
+  --color-ghost-white-300: #6666ff;
+  --color-ghost-white-400: #3333ff;
+  --color-ghost-white-500: #0000ff;
+  --color-ghost-white-600: #0000cc;
+  --color-ghost-white-700: #000099;
+  --color-ghost-white-800: #000066;
+  --color-ghost-white-900: #000033;
+  --color-ghost-white-950: #000024;
+
+  /* Turquoise Surf */
+  --color-turquoise-surf-50: #e9f8fb;
+  --color-turquoise-surf-100: #d3f2f8;
+  --color-turquoise-surf-200: #a7e4f1;
+  --color-turquoise-surf-300: #7bd7ea;
+  --color-turquoise-surf-400: #50cae2;
+  --color-turquoise-surf-500: #24bddb;
+  --color-turquoise-surf-600: #1d97af;
+  --color-turquoise-surf-700: #157184;
+  --color-turquoise-surf-800: #0e4b58;
+  --color-turquoise-surf-900: #07262c;
+  --color-turquoise-surf-950: #051a1f;
+
+  /* Blue Bell */
+  --color-blue-bell-50: #e7f4fd;
+  --color-blue-bell-100: #cfe8fc;
+  --color-blue-bell-200: #9fd2f9;
+  --color-blue-bell-300: #6fbbf6;
+  --color-blue-bell-400: #3fa5f3;
+  --color-blue-bell-500: #0f8ef0;
+  --color-blue-bell-600: #0c72c0;
+  --color-blue-bell-700: #095590;
+  --color-blue-bell-800: #063960;
+  --color-blue-bell-900: #031c30;
+  --color-blue-bell-950: #021422;
+
+  /* ── Typography ──────────────────────────────────── */
+  --font-sans: var(--font-open-sans);
+  --font-heading: var(--font-raleway);
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* ── Base Reset & Defaults ───────────────────────────── */
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: #ffffff;
+  color: #111111;
+  font-family: var(--font-open-sans), system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-raleway), system-ui, sans-serif;
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+}
+
+/* ── Scroll Animations ────────────────────────────────── */
+.animate-on-scroll {
+  opacity: 0;
+  transition:
+    opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.animate-on-scroll.anim-fade-up {
+  transform: translateY(32px);
+}
+
+.animate-on-scroll.anim-fade-in {
+  transform: none;
+}
+
+.animate-on-scroll.anim-slide-left {
+  transform: translateX(-32px);
+}
+
+.animate-on-scroll.anim-slide-right {
+  transform: translateX(32px);
+}
+
+.animate-on-scroll.anim-scale {
+  transform: scale(0.96);
+}
+
+.animate-on-scroll.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+/* ── Marquee ────────────────────────────────────────────── */
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.marquee-track {
+  display: flex;
+  width: max-content;
+  animation: marquee 28s linear infinite;
+  will-change: transform;
+}
+
+.marquee-track:hover {
+  animation-play-state: paused;
+}
+
+/* ── Hero text stagger ──────────────────────────────────── */
+@keyframes heroFadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.hero-item {
+  opacity: 0;
+  animation: heroFadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.hero-item:nth-child(1) {
+  animation-delay: 0.1s;
+}
+.hero-item:nth-child(2) {
+  animation-delay: 0.25s;
+}
+.hero-item:nth-child(3) {
+  animation-delay: 0.4s;
+}
+.hero-item:nth-child(4) {
+  animation-delay: 0.55s;
+}
+.hero-item:nth-child(5) {
+  animation-delay: 0.7s;
+}
+.hero-item:nth-child(6) {
+  animation-delay: 0.85s;
+}
+
+/* ── Image reveal ───────────────────────────────────────── */
+@keyframes imageReveal {
+  from {
+    opacity: 0;
+    transform: scale(1.04);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.hero-image-reveal {
+  animation: imageReveal 1.1s cubic-bezier(0.16, 1, 0.3, 1) 0.3s both;
+}
+
+/* ── Button & link hover effects ───────────────────────── */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.875rem 2rem;
+  background-color: #e31c41;
+  color: #ffffff;
+  font-family: var(--font-raleway), system-ui, sans-serif;
+  font-weight: 600;
+  font-size: 0.9375rem;
+  letter-spacing: 0.02em;
+  border-radius: 4px;
+  transition:
+    background-color 0.2s ease,
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.btn-primary:hover {
+  background-color: #b61634;
+  transform: translateY(-1px);
+  box-shadow: 0 8px 24px rgba(227, 28, 65, 0.25);
+}
+
+.btn-primary:active {
+  transform: translateY(0);
+}
+
+.btn-outline {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.875rem 2rem;
+  background-color: transparent;
+  color: #111111;
+  font-family: var(--font-raleway), system-ui, sans-serif;
+  font-weight: 600;
+  font-size: 0.9375rem;
+  letter-spacing: 0.02em;
+  border: 1.5px solid #111111;
+  border-radius: 4px;
+  transition:
+    background-color 0.2s ease,
+    color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.btn-outline:hover {
+  background-color: #111111;
+  color: #ffffff;
+  transform: translateY(-1px);
+}
+
+.btn-outline-light {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.875rem 2rem;
+  background-color: transparent;
+  color: #ffffff;
+  font-family: var(--font-raleway), system-ui, sans-serif;
+  font-weight: 600;
+  font-size: 0.9375rem;
+  letter-spacing: 0.02em;
+  border: 1.5px solid rgba(255, 255, 255, 0.5);
+  border-radius: 4px;
+  transition:
+    background-color 0.2s ease,
+    border-color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.btn-outline-light:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  border-color: #ffffff;
+  transform: translateY(-1px);
+}
+
+/* ── Nav link underline animation ────────────────────── */
+.nav-link {
+  position: relative;
+  font-family: var(--font-raleway), system-ui, sans-serif;
+  font-weight: 500;
+  color: #111111;
+  font-size: 0.9375rem;
+  letter-spacing: 0.02em;
+  transition: color 0.2s ease;
+}
+
+.nav-link::after {
+  content: "";
+  position: absolute;
+  bottom: -3px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: #e31c41;
+  transition: width 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.nav-link:hover::after,
+.nav-link.active::after {
+  width: 100%;
+}
+
+/* ── FAQ accordion ────────────────────────────────────── */
+.faq-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.faq-content.open {
+  max-height: 400px;
+}
+
+/* ── Section divider ─────────────────────────────────── */
+.section-label {
+  display: inline-block;
+  font-family: var(--font-open-sans), system-ui, sans-serif;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #e31c41;
+}
+
+/* ── Card hover ──────────────────────────────────────── */
+.card-hover {
+  transition:
+    transform 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+    box-shadow 0.3s ease;
+}
+
+.card-hover:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.08);
+}
+
+/* ── Pink accent bar ─────────────────────────────────── */
+.pink-bar::before {
+  content: "";
+  display: block;
+  width: 48px;
+  height: 3px;
+  background-color: #e31c41;
+  margin-bottom: 1rem;
 }
