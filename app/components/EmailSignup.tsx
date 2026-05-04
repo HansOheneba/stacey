@@ -10,7 +10,7 @@ export default function EmailSignup() {
         type="email"
         required
         placeholder="Your email address"
-        className="flex-1 px-4 py-3 bg-white/10 border border-white/20 rounded text-white placeholder-white/40 text-sm focus:outline-none focus:border-[#e31c41] transition-colors duration-200"
+        className="flex-1 px-4 py-3 bg-white/10 border border-white/20 rounded text-white placeholder-white/40 text-sm focus:outline-none focus:border-golden-chestnut-500 transition-colors duration-200"
       />
       <button
         type="submit"

@@ -26,11 +26,8 @@ export default function Home() {
                   </span>
                 </div>
 
-                <h1
-                  className="hero-item text-[clamp(3rem,7vw,5.5rem)] font-extrabold leading-[1.05] tracking-tight text-[#111111]"
-                  style={{ fontFamily: "var(--font-raleway), sans-serif" }}
-                >
-                  Stacey <span className="text-[#e31c41]">Elsie</span>
+                <h1 className="hero-item font-heading text-[clamp(3rem,7vw,5.5rem)] font-extrabold leading-[1.05] tracking-tight text-[#111111]">
+                  Stacey <span className="text-golden-chestnut-500">Elsie</span>
                   <br />
                   Lamptey
                 </h1>
@@ -39,8 +36,7 @@ export default function Home() {
                   {["Speaker", "Growth Strategist"].map((title) => (
                     <span
                       key={title}
-                      className="inline-block px-4 py-1.5 border border-[#111111]/20 rounded-full text-sm font-semibold text-[#111111]/70 tracking-wide"
-                      style={{ fontFamily: "var(--font-raleway), sans-serif" }}
+                      className="inline-block px-4 py-1.5 border border-[#111111]/20 rounded-full text-sm font-semibold font-heading text-[#111111]/70 tracking-wide"
                     >
                       {title}
                     </span>
@@ -75,8 +71,8 @@ export default function Home() {
               {/* Image: strictly square */}
               <div className="order-1 lg:order-2 flex justify-center lg:justify-end">
                 <div className="hero-image-reveal relative w-full max-w-[480px]">
-                  {/* Pink decorative block */}
-                  <div className="absolute -bottom-4 -right-4 w-full h-full bg-[#fce8ec] rounded-lg -z-10" />
+                  {/* Accent decorative block */}
+                  <div className="absolute -bottom-4 -right-4 w-full h-full bg-golden-chestnut-50 rounded-lg -z-10" />
                   <div className="relative w-full aspect-square overflow-hidden rounded-lg">
                     <Image
                       src="/stacey/2.jpg"
@@ -109,7 +105,7 @@ export default function Home() {
                   />
                 </div>
                 {/* Accent */}
-                <div className="absolute -top-4 -left-4 w-24 h-24 border-2 border-[#e31c41] rounded-lg opacity-40 -z-10" />
+                <div className="absolute -top-4 -left-4 w-24 h-24 border-2 border-golden-chestnut-500 rounded-lg opacity-40 -z-10" />
               </AnimateOnScroll>
 
               {/* Text */}
@@ -119,13 +115,12 @@ export default function Home() {
                 </AnimateOnScroll>
 
                 <AnimateOnScroll animation="fade-up" delay={150}>
-                  <h2
-                    className="text-[clamp(2rem,4vw,3rem)] font-bold leading-tight text-[#111111]"
-                    style={{ fontFamily: "var(--font-raleway), sans-serif" }}
-                  >
+                  <h2 className="font-heading text-[clamp(2rem,4vw,3rem)] font-bold leading-tight text-[#111111]">
                     A speaker on{" "}
-                    <span className="text-[#e31c41]">Mindset Mastery</span> and
-                    Growth.
+                    <span className="text-golden-chestnut-500">
+                      Mindset Mastery
+                    </span>{" "}
+                    and Growth.
                   </h2>
                 </AnimateOnScroll>
 
@@ -174,11 +169,12 @@ export default function Home() {
             {tickerItems.map((role, i) => (
               <span
                 key={i}
-                className="flex items-center gap-6 px-6 text-sm font-semibold uppercase tracking-[0.2em] text-[#111111]/30 whitespace-nowrap"
-                style={{ fontFamily: "var(--font-raleway), sans-serif" }}
+                className="flex items-center gap-6 px-6 text-sm font-semibold font-heading uppercase tracking-[0.2em] text-[#111111]/30 whitespace-nowrap"
               >
                 {role}
-                <span className="text-[#e31c41] text-base leading-none">·</span>
+                <span className="text-golden-chestnut-500 text-base leading-none">
+                  ·
+                </span>
               </span>
             ))}
           </div>
@@ -187,7 +183,7 @@ export default function Home() {
         {/* ── Community ────────────────────────────────────── */}
         <section className="bg-[#0d0d0d] py-24 lg:py-32 relative overflow-hidden">
           {/* Subtle background accent */}
-          <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-[#e31c41]/5 rounded-full blur-3xl translate-x-1/2 -translate-y-1/2 pointer-events-none" />
+          <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-golden-chestnut-500/5 rounded-full blur-3xl translate-x-1/2 -translate-y-1/2 pointer-events-none" />
 
           <div className="max-w-7xl mx-auto px-6 lg:px-12 relative">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center">
@@ -198,12 +194,9 @@ export default function Home() {
                 </AnimateOnScroll>
 
                 <AnimateOnScroll animation="fade-up" delay={100}>
-                  <h2
-                    className="text-[clamp(2rem,4vw,3.25rem)] font-bold leading-tight text-white"
-                    style={{ fontFamily: "var(--font-raleway), sans-serif" }}
-                  >
+                  <h2 className="font-heading text-[clamp(2rem,4vw,3.25rem)] font-bold leading-tight text-white">
                     A New Kind of{" "}
-                    <span className="text-[#e31c41]">Community</span>
+                    <span className="text-golden-chestnut-500">Community</span>
                   </h2>
                 </AnimateOnScroll>
 

@@ -3,18 +3,18 @@
 @theme {
   /* ── Brand Colors ────────────────────────────────── */
 
-  /* Bubblegum Pink */
-  --color-bubblegum-pink-50: #fce8ec;
-  --color-bubblegum-pink-100: #f9d2d9;
-  --color-bubblegum-pink-200: #f4a4b3;
-  --color-bubblegum-pink-300: #ee778d;
-  --color-bubblegum-pink-400: #e94967;
-  --color-bubblegum-pink-500: #e31c41;
-  --color-bubblegum-pink-600: #b61634;
-  --color-bubblegum-pink-700: #881127;
-  --color-bubblegum-pink-800: #5b0b1a;
-  --color-bubblegum-pink-900: #2d060d;
-  --color-bubblegum-pink-950: #200409;
+  /* Golden Chestnut */
+  --color-golden-chestnut-50: #f8f2ec;
+  --color-golden-chestnut-100: #f1e5da;
+  --color-golden-chestnut-200: #e4cab4;
+  --color-golden-chestnut-300: #d6b08f;
+  --color-golden-chestnut-400: #c99669;
+  --color-golden-chestnut-500: #bb7c44;
+  --color-golden-chestnut-600: #966336;
+  --color-golden-chestnut-700: #704a29;
+  --color-golden-chestnut-800: #4b311b;
+  --color-golden-chestnut-900: #25190e;
+  --color-golden-chestnut-950: #1a1109;
 
   /* Pitch Black (Gold tones) */
   --color-pitch-black-50: #fffbe5;
@@ -55,18 +55,18 @@
   --color-turquoise-surf-900: #07262c;
   --color-turquoise-surf-950: #051a1f;
 
-  /* Blue Bell */
-  --color-blue-bell-50: #e7f4fd;
-  --color-blue-bell-100: #cfe8fc;
-  --color-blue-bell-200: #9fd2f9;
-  --color-blue-bell-300: #6fbbf6;
-  --color-blue-bell-400: #3fa5f3;
-  --color-blue-bell-500: #0f8ef0;
-  --color-blue-bell-600: #0c72c0;
-  --color-blue-bell-700: #095590;
-  --color-blue-bell-800: #063960;
-  --color-blue-bell-900: #031c30;
-  --color-blue-bell-950: #021422;
+  /* Rich Cerulean */
+  --color-rich-cerulean-50: #eef3f7;
+  --color-rich-cerulean-100: #dce7ef;
+  --color-rich-cerulean-200: #b9cfdf;
+  --color-rich-cerulean-300: #96b6cf;
+  --color-rich-cerulean-400: #739ebf;
+  --color-rich-cerulean-500: #5086af;
+  --color-rich-cerulean-600: #406b8c;
+  --color-rich-cerulean-700: #305069;
+  --color-rich-cerulean-800: #203646;
+  --color-rich-cerulean-900: #101b23;
+  --color-rich-cerulean-950: #0b1318;
 
   /* ── Typography ──────────────────────────────────── */
   --font-sans: var(--font-open-sans);
@@ -210,7 +210,7 @@ h6 {
   align-items: center;
   gap: 0.5rem;
   padding: 0.875rem 2rem;
-  background-color: #e31c41;
+  background-color: #bb7c44;
   color: #ffffff;
   font-family: var(--font-raleway), system-ui, sans-serif;
   font-weight: 600;
@@ -224,9 +224,9 @@ h6 {
 }
 
 .btn-primary:hover {
-  background-color: #b61634;
+  background-color: #966336;
   transform: translateY(-1px);
-  box-shadow: 0 8px 24px rgba(227, 28, 65, 0.25);
+  box-shadow: 0 8px 24px rgba(187, 124, 68, 0.25);
 }
 
 .btn-primary:active {
@@ -301,7 +301,7 @@ h6 {
   left: 0;
   width: 0;
   height: 2px;
-  background-color: #e31c41;
+  background-color: #bb7c44;
   transition: width 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
@@ -329,7 +329,7 @@ h6 {
   font-weight: 600;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: #e31c41;
+  color: #bb7c44;
 }
 
 /* ── Card hover ──────────────────────────────────────── */
@@ -344,12 +344,12 @@ h6 {
   box-shadow: 0 16px 48px rgba(0, 0, 0, 0.08);
 }
 
-/* ── Pink accent bar ─────────────────────────────────── */
-.pink-bar::before {
+/* ── Accent bar ──────────────────────────────────────── */
+.accent-bar::before {
   content: "";
   display: block;
   width: 48px;
   height: 3px;
-  background-color: #e31c41;
+  background-color: #bb7c44;
   margin-bottom: 1rem;
 }

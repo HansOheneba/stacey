@@ -61,7 +61,7 @@ export default function Footer() {
           {/* Navigation */}
           <div>
             <p
-              className="text-xs font-semibold uppercase tracking-widest text-[#e31c41] mb-5"
+              className="text-xs font-semibold uppercase tracking-widest text-golden-chestnut-500 mb-5"
               style={{ fontFamily: "var(--font-raleway), sans-serif" }}
             >
               Pages
@@ -87,7 +87,7 @@ export default function Footer() {
           {/* Socials */}
           <div>
             <p
-              className="text-xs font-semibold uppercase tracking-widest text-[#e31c41] mb-5"
+              className="text-xs font-semibold uppercase tracking-widest text-golden-chestnut-500 mb-5"
               style={{ fontFamily: "var(--font-raleway), sans-serif" }}
             >
               Connect
@@ -100,7 +100,7 @@ export default function Footer() {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={name}
-                  className="flex items-center justify-center w-10 h-10 rounded-full border border-white/20 text-white/60 hover:text-white hover:border-[#e31c41] transition-all duration-200 hover:bg-[#e31c41]/10"
+                  className="flex items-center justify-center w-10 h-10 rounded-full border border-white/20 text-white/60 hover:text-white hover:border-golden-chestnut-500 transition-all duration-200 hover:bg-golden-chestnut-500/10"
                 >
                   {icon}
                 </a>
@@ -108,7 +108,7 @@ export default function Footer() {
               <a
                 href="mailto:stacey.elsie.lamptey@gmail.com"
                 aria-label="Email"
-                className="flex items-center justify-center w-10 h-10 rounded-full border border-white/20 text-white/60 hover:text-white hover:border-[#e31c41] transition-all duration-200 hover:bg-[#e31c41]/10"
+                className="flex items-center justify-center w-10 h-10 rounded-full border border-white/20 text-white/60 hover:text-white hover:border-golden-chestnut-500 transition-all duration-200 hover:bg-golden-chestnut-500/10"
               >
                 <svg
                   viewBox="0 0 24 24"
@@ -135,7 +135,7 @@ export default function Footer() {
           </p>
           <Link
             href="/contact"
-            className="text-xs text-white/40 hover:text-[#e31c41] transition-colors duration-200"
+            className="text-xs text-white/40 hover:text-golden-chestnut-500 transition-colors duration-200"
           >
             Book a Speaking Engagement →
           </Link>

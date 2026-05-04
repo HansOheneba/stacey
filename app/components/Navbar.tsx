@@ -16,6 +16,13 @@ export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const pathname = usePathname();
+  const [prevPathname, setPrevPathname] = useState(pathname);
+
+  // Close menu when route changes (React-approved pattern for syncing state with prop)
+  if (prevPathname !== pathname) {
+    setPrevPathname(pathname);
+    setMenuOpen(false);
+  }
 
   const isDarkHero = !scrolled && darkHeroRoutes.includes(pathname);
 
@@ -24,11 +31,6 @@ export default function Navbar() {
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
-
-  // Close menu on route change
-  useEffect(() => {
-    setMenuOpen(false);
-  }, [pathname]);
 
   return (
     <header
@@ -41,13 +43,9 @@ export default function Navbar() {
           {/* Logo */}
           <Link
             href="/"
-            className={`font-heading font-800 text-xl tracking-tight transition-colors duration-200 hover:text-[#e31c41] ${
+            className={`font-heading font-extrabold text-xl tracking-tight transition-colors duration-200 hover:text-golden-chestnut-500 ${
               isDarkHero ? "text-white" : "text-[#111111]"
             }`}
-            style={{
-              fontFamily: "var(--font-raleway), sans-serif",
-              fontWeight: 800,
-            }}
           >
             Stacey Elsie
           </Link>

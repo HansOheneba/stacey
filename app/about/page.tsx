@@ -51,11 +51,8 @@ export default function AboutPage() {
           <div className="max-w-7xl mx-auto px-6 lg:px-12">
             <div className="max-w-2xl">
               <span className="section-label">Speaker Profile</span>
-              <h1
-                className="mt-4 text-[clamp(2.75rem,6vw,5rem)] font-extrabold leading-[1.05] tracking-tight text-[#111111]"
-                style={{ fontFamily: "var(--font-raleway), sans-serif" }}
-              >
-                Stacey <span className="text-[#e31c41]">Elsie</span>
+              <h1 className="mt-4 font-heading text-[clamp(2.75rem,6vw,5rem)] font-extrabold leading-[1.05] tracking-tight text-[#111111]">
+                Stacey <span className="text-golden-chestnut-500">Elsie</span>
               </h1>
               <p className="mt-4 text-lg text-[#111111]/55 leading-relaxed max-w-xl">
                 Dynamic speaker, mindset mastery coach, and change agent whose
@@ -83,10 +80,7 @@ export default function AboutPage() {
                 {/* stat callout */}
                 <div className="mt-6 flex gap-8">
                   <div>
-                    <p
-                      className="text-3xl font-extrabold text-[#e31c41]"
-                      style={{ fontFamily: "var(--font-raleway), sans-serif" }}
-                    >
+                    <p className="font-heading text-3xl font-extrabold text-golden-chestnut-500">
                       1,000+
                     </p>
                     <p className="text-xs text-[#111111]/50 mt-1 uppercase tracking-wider">
@@ -94,10 +88,7 @@ export default function AboutPage() {
                     </p>
                   </div>
                   <div className="border-l border-gray-200 pl-8">
-                    <p
-                      className="text-3xl font-extrabold text-[#111111]"
-                      style={{ fontFamily: "var(--font-raleway), sans-serif" }}
-                    >
+                    <p className="font-heading text-3xl font-extrabold text-[#111111]">
                       4
                     </p>
                     <p className="text-xs text-[#111111]/50 mt-1 uppercase tracking-wider">
@@ -142,11 +133,8 @@ export default function AboutPage() {
 
                 {/* Quote */}
                 <AnimateOnScroll animation="fade-up" delay={400}>
-                  <blockquote className="mt-4 border-l-4 border-[#e31c41] pl-6 py-2">
-                    <p
-                      className="text-xl font-semibold italic text-[#111111]"
-                      style={{ fontFamily: "var(--font-raleway), sans-serif" }}
-                    >
+                  <blockquote className="mt-4 border-l-4 border-golden-chestnut-500 pl-6 py-2">
+                    <p className="font-heading text-xl font-semibold italic text-[#111111]">
                       &ldquo;The key to impact is turning potential into
                       possibilities.&rdquo;
                     </p>
@@ -166,10 +154,7 @@ export default function AboutPage() {
             <AnimateOnScroll animation="fade-up">
               <div className="max-w-xl mb-14">
                 <span className="section-label">Speaking Topics</span>
-                <h2
-                  className="mt-4 text-[clamp(1.75rem,3.5vw,2.75rem)] font-bold text-[#111111]"
-                  style={{ fontFamily: "var(--font-raleway), sans-serif" }}
-                >
+                <h2 className="font-heading mt-4 text-[clamp(1.75rem,3.5vw,2.75rem)] font-bold text-[#111111]">
                   What Stacey Speaks On
                 </h2>
               </div>
@@ -182,17 +167,11 @@ export default function AboutPage() {
                   animation="fade-up"
                   delay={i * 80}
                 >
-                  <div className="card-hover h-full bg-[#fafafa] rounded-lg p-8 border border-transparent hover:border-[#e31c41]/20">
-                    <span
-                      className="text-4xl font-extrabold text-[#e31c41]/15"
-                      style={{ fontFamily: "var(--font-raleway), sans-serif" }}
-                    >
+                  <div className="card-hover h-full bg-[#fafafa] rounded-lg p-8 border border-transparent hover:border-golden-chestnut-500/20">
+                    <span className="font-heading text-4xl font-extrabold text-golden-chestnut-500/15">
                       {topic.icon}
                     </span>
-                    <h3
-                      className="mt-4 text-lg font-bold text-[#111111]"
-                      style={{ fontFamily: "var(--font-raleway), sans-serif" }}
-                    >
+                    <h3 className="font-heading mt-4 text-lg font-bold text-[#111111]">
                       {topic.title}
                     </h3>
                     <p className="mt-2 text-sm text-[#111111]/55 leading-relaxed">
@@ -207,7 +186,7 @@ export default function AboutPage() {
 
         {/* ── Training & Transforming ─────────────────────────── */}
         <section className="bg-[#0d0d0d] py-24 lg:py-32 overflow-hidden relative">
-          <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-[#e31c41]/5 rounded-full blur-3xl -translate-x-1/2 translate-y-1/2 pointer-events-none" />
+          <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-golden-chestnut-500/5 rounded-full blur-3xl -translate-x-1/2 translate-y-1/2 pointer-events-none" />
 
           <div className="max-w-7xl mx-auto px-6 lg:px-12 relative">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center">
@@ -218,12 +197,9 @@ export default function AboutPage() {
                 </AnimateOnScroll>
 
                 <AnimateOnScroll animation="fade-up" delay={100}>
-                  <h2
-                    className="text-[clamp(1.75rem,3.5vw,2.75rem)] font-bold text-white"
-                    style={{ fontFamily: "var(--font-raleway), sans-serif" }}
-                  >
+                  <h2 className="font-heading text-[clamp(1.75rem,3.5vw,2.75rem)] font-bold text-white">
                     Guiding Individuals &amp; Organizations to{" "}
-                    <span className="text-[#e31c41]">Transform</span>
+                    <span className="text-golden-chestnut-500">Transform</span>
                   </h2>
                 </AnimateOnScroll>
 
@@ -243,20 +219,14 @@ export default function AboutPage() {
 
                 <AnimateOnScroll animation="fade-up" delay={300}>
                   <div>
-                    <p
-                      className="text-xs font-semibold uppercase tracking-widest text-white/30 mb-4"
-                      style={{ fontFamily: "var(--font-raleway), sans-serif" }}
-                    >
+                    <p className="font-heading text-xs font-semibold uppercase tracking-widest text-white/30 mb-4">
                       Engagement Formats
                     </p>
                     <div className="flex flex-wrap gap-2">
                       {formats.map((f) => (
                         <span
                           key={f}
-                          className="px-3 py-1.5 text-xs font-medium border border-white/20 rounded-full text-white/60"
-                          style={{
-                            fontFamily: "var(--font-raleway), sans-serif",
-                          }}
+                          className="font-heading px-3 py-1.5 text-xs font-medium border border-white/20 rounded-full text-white/60"
                         >
                           {f}
                         </span>
