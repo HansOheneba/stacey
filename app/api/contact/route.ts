@@ -1,9 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { appendToSheet } from "@/lib/sheets";
-import {
-  sendEnquiryReceived,
-  sendEnquiryNotification,
-} from "@/lib/email";
+import { sendEnquiryReceived, sendEnquiryNotification } from "@/lib/email";
 
 const HEADERS = [
   "Timestamp",

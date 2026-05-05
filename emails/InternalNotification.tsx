@@ -70,7 +70,10 @@ export default function InternalNotification({
                 </Text>
 
                 <Section style={card}>
-                  <Row label="Name" value={`${enquiry.firstName} ${enquiry.lastName}`} />
+                  <Row
+                    label="Name"
+                    value={`${enquiry.firstName} ${enquiry.lastName}`}
+                  />
                   <Row label="Email" value={enquiry.email} />
                   {(enquiry.phoneCode || enquiry.phone) && (
                     <Row

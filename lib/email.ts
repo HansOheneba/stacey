@@ -18,10 +18,17 @@ function getNotificationEmails(): string[] {
     .filter(Boolean);
 }
 
+async function renderBoth(component: React.ReactElement) {
+  const [html, text] = await Promise.all([
+    render(component),
+    render(component, { plainText: true }),
+  ]);
+  return { html, text };
+}
+
 export async function sendNewsletterWelcome(email: string) {
-  const html = await render(
-    createElement(NewsletterWelcome, { email }),
-  );
+  const el = createElement(NewsletterWelcome, { email });
+  const { html, text } = await renderBoth(el);
 
   await resend.emails.send({
     from: FROM,
@@ -29,13 +36,21 @@ export async function sendNewsletterWelcome(email: string) {
     to: [email],
     subject: "You are in. Welcome to the community.",
     html,
+    text,
+    headers: {
+      "List-Unsubscribe": `<mailto:${REPLY_TO}?subject=unsubscribe>`,
+      "List-Unsubscribe-Post": "List-Unsubscribe=One-Click",
+    },
   });
 }
 
-export async function sendEnquiryReceived(firstName: string, email: string, subject: string) {
-  const html = await render(
-    createElement(EnquiryReceived, { firstName, subject }),
-  );
+export async function sendEnquiryReceived(
+  firstName: string,
+  email: string,
+  subject: string,
+) {
+  const el = createElement(EnquiryReceived, { firstName, subject });
+  const { html, text } = await renderBoth(el);
 
   await resend.emails.send({
     from: FROM,
@@ -43,6 +58,7 @@ export async function sendEnquiryReceived(firstName: string, email: string, subj
     to: [email],
     subject: "Your message has been received.",
     html,
+    text,
   });
 }
 
@@ -59,9 +75,11 @@ export async function sendEnquiryNotification(enquiry: {
   const notifyEmails = getNotificationEmails();
   if (!notifyEmails.length) return;
 
-  const html = await render(
-    createElement(InternalNotification, { type: "enquiry", enquiry }),
-  );
+  const el = createElement(InternalNotification, {
+    type: "enquiry",
+    enquiry,
+  });
+  const { html, text } = await renderBoth(el);
 
   await resend.emails.send({
     from: FROM,
@@ -69,19 +87,22 @@ export async function sendEnquiryNotification(enquiry: {
     to: notifyEmails,
     subject: `New enquiry: ${enquiry.subject} from ${enquiry.firstName} ${enquiry.lastName}`,
     html,
+    text,
   });
 }
 
-export async function sendNewsletterNotification(email: string, source: string) {
+export async function sendNewsletterNotification(
+  email: string,
+  source: string,
+) {
   const notifyEmails = getNotificationEmails();
   if (!notifyEmails.length) return;
 
-  const html = await render(
-    createElement(InternalNotification, {
-      type: "newsletter",
-      newsletter: { email, source },
-    }),
-  );
+  const el = createElement(InternalNotification, {
+    type: "newsletter",
+    newsletter: { email, source },
+  });
+  const { html, text } = await renderBoth(el);
 
   await resend.emails.send({
     from: FROM,
@@ -89,5 +110,6 @@ export async function sendNewsletterNotification(email: string, source: string) 
     to: notifyEmails,
     subject: `New subscriber: ${email}`,
     html,
+    text,
   });
 }

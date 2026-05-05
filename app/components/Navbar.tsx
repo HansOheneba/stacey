@@ -73,7 +73,7 @@ export default function Navbar() {
 
           {/* CTA */}
           <div className="hidden md:flex items-center">
-            <Link href="/contact" className="btn-primary text-sm py-3 px-6">
+            <Link href="/contact" className="btn-primary text-sm py-3 px-6 uppercase">
               Book Stacey
             </Link>
           </div>

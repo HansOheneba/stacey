@@ -1,9 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { appendToSheet } from "@/lib/sheets";
-import {
-  sendNewsletterWelcome,
-  sendNewsletterNotification,
-} from "@/lib/email";
+import { sendNewsletterWelcome, sendNewsletterNotification } from "@/lib/email";
 
 const HEADERS = ["Timestamp", "Email", "Source"];
 
