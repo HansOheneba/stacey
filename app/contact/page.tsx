@@ -54,7 +54,7 @@ function FAQItem({ q, a }: { q: string; a: string }) {
           {q}
         </span>
         <span
-          className={`flex-shrink-0 text-golden-chestnut-500 transition-transform duration-300 ${open ? "rotate-45" : ""}`}
+          className={`flex-shrink-0 text-golden-earth-500 transition-transform duration-300 ${open ? "rotate-45" : ""}`}
         >
           <svg viewBox="0 0 20 20" fill="currentColor" className="w-5 h-5">
             <path d="M10.75 4.75a.75.75 0 0 0-1.5 0v4.5h-4.5a.75.75 0 0 0 0 1.5h4.5v4.5a.75.75 0 0 0 1.5 0v-4.5h4.5a.75.75 0 0 0 0-1.5h-4.5v-4.5Z" />
@@ -88,13 +88,13 @@ function ContactForm() {
   if (submitted) {
     return (
       <div className="flex flex-col items-center justify-center text-center py-16 gap-4">
-        <div className="w-16 h-16 rounded-full bg-golden-chestnut-50 flex items-center justify-center">
+        <div className="w-16 h-16 rounded-full bg-golden-earth-50 flex items-center justify-center">
           <svg
             viewBox="0 0 24 24"
             fill="none"
             stroke="currentColor"
             strokeWidth="2"
-            className="w-8 h-8 text-golden-chestnut-500"
+            className="w-8 h-8 text-golden-earth-500"
           >
             <path
               strokeLinecap="round"
@@ -112,7 +112,7 @@ function ContactForm() {
         </p>
         <button
           onClick={() => setSubmitted(false)}
-          className="mt-2 text-sm text-golden-chestnut-500 hover:underline"
+          className="mt-2 text-sm text-golden-earth-500 hover:underline"
         >
           Send another message
         </button>
@@ -126,24 +126,24 @@ function ContactForm() {
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         <div className="flex flex-col gap-1.5">
           <label className="text-xs font-semibold text-[#111111]/50 uppercase tracking-wider">
-            First Name <span className="text-golden-chestnut-500">*</span>
+            First Name <span className="text-golden-earth-500">*</span>
           </label>
           <input
             type="text"
             required
             placeholder="First name"
-            className="px-4 py-3 border border-gray-200 rounded text-sm text-[#111111] placeholder-[#111111]/30 focus:outline-none focus:border-golden-chestnut-500 transition-colors duration-200"
+            className="px-4 py-3 border border-gray-200 rounded text-sm text-[#111111] placeholder-[#111111]/30 focus:outline-none focus:border-golden-earth-500 transition-colors duration-200"
           />
         </div>
         <div className="flex flex-col gap-1.5">
           <label className="text-xs font-semibold text-[#111111]/50 uppercase tracking-wider">
-            Last Name <span className="text-golden-chestnut-500">*</span>
+            Last Name <span className="text-golden-earth-500">*</span>
           </label>
           <input
             type="text"
             required
             placeholder="Last name"
-            className="px-4 py-3 border border-gray-200 rounded text-sm text-[#111111] placeholder-[#111111]/30 focus:outline-none focus:border-golden-chestnut-500 transition-colors duration-200"
+            className="px-4 py-3 border border-gray-200 rounded text-sm text-[#111111] placeholder-[#111111]/30 focus:outline-none focus:border-golden-earth-500 transition-colors duration-200"
           />
         </div>
       </div>
@@ -151,13 +151,13 @@ function ContactForm() {
       {/* Email */}
       <div className="flex flex-col gap-1.5">
         <label className="text-xs font-semibold text-[#111111]/50 uppercase tracking-wider">
-          Email <span className="text-golden-chestnut-500">*</span>
+          Email <span className="text-golden-earth-500">*</span>
         </label>
         <input
           type="email"
           required
           placeholder="your@email.com"
-          className="px-4 py-3 border border-gray-200 rounded text-sm text-[#111111] placeholder-[#111111]/30 focus:outline-none focus:border-golden-chestnut-500 transition-colors duration-200"
+          className="px-4 py-3 border border-gray-200 rounded text-sm text-[#111111] placeholder-[#111111]/30 focus:outline-none focus:border-golden-earth-500 transition-colors duration-200"
         />
       </div>
 
@@ -170,7 +170,7 @@ function ContactForm() {
           <select
             value={countryCode}
             onChange={(e) => setCountryCode(e.target.value)}
-            className="px-3 py-3 border border-gray-200 rounded text-sm text-[#111111] focus:outline-none focus:border-golden-chestnut-500 transition-colors duration-200 bg-white"
+            className="px-3 py-3 border border-gray-200 rounded text-sm text-[#111111] focus:outline-none focus:border-golden-earth-500 transition-colors duration-200 bg-white"
           >
             {countryCodes.map(({ code, label }) => (
               <option key={code} value={code}>
@@ -181,7 +181,7 @@ function ContactForm() {
           <input
             type="tel"
             placeholder="Phone number"
-            className="flex-1 px-4 py-3 border border-gray-200 rounded text-sm text-[#111111] placeholder-[#111111]/30 focus:outline-none focus:border-golden-chestnut-500 transition-colors duration-200"
+            className="flex-1 px-4 py-3 border border-gray-200 rounded text-sm text-[#111111] placeholder-[#111111]/30 focus:outline-none focus:border-golden-earth-500 transition-colors duration-200"
           />
         </div>
       </div>
@@ -189,12 +189,12 @@ function ContactForm() {
       {/* Subject */}
       <div className="flex flex-col gap-1.5">
         <label className="text-xs font-semibold text-[#111111]/50 uppercase tracking-wider">
-          Subject <span className="text-golden-chestnut-500">*</span>
+          Subject <span className="text-golden-earth-500">*</span>
         </label>
         <select
           required
           defaultValue=""
-          className="px-4 py-3 border border-gray-200 rounded text-sm text-[#111111] focus:outline-none focus:border-golden-chestnut-500 transition-colors duration-200 bg-white"
+          className="px-4 py-3 border border-gray-200 rounded text-sm text-[#111111] focus:outline-none focus:border-golden-earth-500 transition-colors duration-200 bg-white"
         >
           <option value="" disabled>
             Select an option
@@ -207,13 +207,13 @@ function ContactForm() {
       {/* Message */}
       <div className="flex flex-col gap-1.5">
         <label className="text-xs font-semibold text-[#111111]/50 uppercase tracking-wider">
-          Message <span className="text-golden-chestnut-500">*</span>
+          Message <span className="text-golden-earth-500">*</span>
         </label>
         <textarea
           required
           rows={5}
           placeholder="Tell us about your event or enquiry..."
-          className="px-4 py-3 border border-gray-200 rounded text-sm text-[#111111] placeholder-[#111111]/30 focus:outline-none focus:border-golden-chestnut-500 transition-colors duration-200 resize-none"
+          className="px-4 py-3 border border-gray-200 rounded text-sm text-[#111111] placeholder-[#111111]/30 focus:outline-none focus:border-golden-earth-500 transition-colors duration-200 resize-none"
         />
       </div>
 
@@ -276,7 +276,7 @@ export default function ContactPage() {
                 <span className="section-label">Get In Touch</span>
                 <h1 className="font-heading mt-4 text-[clamp(2.75rem,6vw,5rem)] font-extrabold leading-[1.05] tracking-tight text-white">
                   Let&apos;s Work{" "}
-                  <span className="text-golden-chestnut-500">Together</span>
+                  <span className="text-golden-earth-500">Together</span>
                 </h1>
                 <p className="mt-4 text-base text-white/50 leading-relaxed max-w-md">
                   Stacey Elsie partners with individuals and organizations for

@@ -10,7 +10,7 @@ const links = [
   { href: "/contact", label: "Contact" },
 ];
 
-const darkHeroRoutes = ["/contact"];
+const darkHeroRoutes = ["/", "/contact", "/about"];
 
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -32,10 +32,16 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  const isHome = pathname === "/";
+
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled ? "bg-white/95 backdrop-blur-md shadow-sm" : "bg-transparent"
+        scrolled
+          ? "bg-white/95 backdrop-blur-md shadow-sm"
+          : isHome
+            ? "bg-gradient-to-b from-[#0d0d0d]/70 to-transparent"
+            : "bg-transparent"
       }`}
     >
       <div className="max-w-7xl mx-auto px-6 lg:px-12">
@@ -43,8 +49,8 @@ export default function Navbar() {
           {/* Logo */}
           <Link
             href="/"
-            className={`font-heading font-extrabold text-xl tracking-tight transition-colors duration-200 hover:text-golden-chestnut-500 ${
-              isDarkHero ? "text-white" : "text-[#111111]"
+            className={`font-heading font-extrabold text-xl tracking-tight transition-colors duration-200 hover:text-golden-earth-500 ${
+              isDarkHero ? "text-white" : "text-platinum-900"
             }`}
           >
             Stacey Elsie

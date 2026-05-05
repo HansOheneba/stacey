@@ -1,8 +1,10 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
+import { motion } from "framer-motion";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
-import AnimateOnScroll from "./components/AnimateOnScroll";
 import EmailSignup from "./components/EmailSignup";
 
 const roles = ["Speaker", "Leader", "Voice", "Strategist", "Growth"];
@@ -14,165 +16,123 @@ export default function Home() {
       <Navbar />
 
       <main className="flex-1">
-        {/* ── Hero ─────────────────────────────────────────── */}
-        <section className="min-h-screen flex items-center bg-white pt-20">
-          <div className="max-w-7xl mx-auto px-6 lg:px-12 w-full">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center py-16 lg:py-24">
-              {/* Text */}
-              <div className="order-2 lg:order-1 flex flex-col gap-6">
-                <div className="hero-item">
-                  <span className="section-label">
-                    Speaker & Growth Strategist
-                  </span>
-                </div>
+        {/* ── Hero: full-bleed image with text overlay ─────── */}
+        <section className="relative min-h-screen flex items-end overflow-hidden bg-white">
+          {/* Background image */}
+          <motion.div
+            className="absolute inset-0"
+            initial={{ scale: 1.06, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+            transition={{ duration: 1.4, ease: [0.16, 1, 0.3, 1] }}
+          >
+            <Image
+              src="/stacey/1.jpg"
+              alt="Stacey Elsie Lamptey"
+              fill
+              className="object-contain object-top"
+              priority
+              sizes="100vw"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-[#0d0d0d] via-[#0d0d0d]/50 to-transparent" />
+          </motion.div>
 
-                <h1 className="hero-item font-heading text-[clamp(3rem,7vw,5.5rem)] font-extrabold leading-[1.05] tracking-tight text-[#111111]">
-                  Stacey <span className="text-golden-chestnut-500">Elsie</span>
-                  <br />
-                  Lamptey
-                </h1>
+          {/* Text content */}
+          <div className="relative z-10 w-full max-w-7xl mx-auto px-6 lg:px-12 pb-20 lg:pb-28">
+            <motion.span
+              className="section-label"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.6, delay: 0.4 }}
+            >
+              Speaker &amp; Growth Strategist
+            </motion.span>
 
-                <div className="hero-item flex flex-wrap gap-3">
-                  {["Speaker", "Growth Strategist"].map((title) => (
-                    <span
-                      key={title}
-                      className="inline-block px-4 py-1.5 border border-[#111111]/20 rounded-full text-sm font-semibold font-heading text-[#111111]/70 tracking-wide"
-                    >
-                      {title}
-                    </span>
-                  ))}
-                </div>
+            <motion.h1
+              className="mt-4 font-heading text-[clamp(3.5rem,8vw,7rem)] font-extrabold leading-[1.0] tracking-tight text-white"
+              initial={{ opacity: 0, y: 28 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{
+                duration: 0.8,
+                ease: [0.16, 1, 0.3, 1],
+                delay: 0.55,
+              }}
+            >
+              Stacey <span className="text-golden-earth-400">Elsie</span>
+              <br />
+              Lamptey
+            </motion.h1>
 
-                <p className="hero-item text-lg text-[#111111]/60 leading-relaxed max-w-md">
-                  Purpose, Mindset, Growth and Development.
-                </p>
+            <motion.p
+              className="mt-5 text-lg text-white/60 leading-relaxed max-w-md"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{
+                duration: 0.8,
+                ease: [0.16, 1, 0.3, 1],
+                delay: 0.7,
+              }}
+            >
+              Purpose, Mindset, Growth and Development.
+            </motion.p>
 
-                <div className="hero-item flex flex-wrap gap-4 pt-2">
-                  <Link href="/contact" className="btn-primary">
-                    Book Stacey
-                    <svg
-                      viewBox="0 0 20 20"
-                      fill="currentColor"
-                      className="w-4 h-4"
-                    >
-                      <path
-                        fillRule="evenodd"
-                        d="M3 10a.75.75 0 0 1 .75-.75h10.638L10.23 5.29a.75.75 0 1 1 1.04-1.08l5.5 5.25a.75.75 0 0 1 0 1.08l-5.5 5.25a.75.75 0 1 1-1.04-1.08l4.158-3.96H3.75A.75.75 0 0 1 3 10Z"
-                        clipRule="evenodd"
-                      />
-                    </svg>
-                  </Link>
-                  <Link href="/about" className="btn-outline">
-                    Learn More
-                  </Link>
-                </div>
-              </div>
-
-              {/* Image: strictly square */}
-              <div className="order-1 lg:order-2 flex justify-center lg:justify-end">
-                <div className="hero-image-reveal relative w-full max-w-[480px]">
-                  {/* Accent decorative block */}
-                  <div className="absolute -bottom-4 -right-4 w-full h-full bg-golden-chestnut-50 rounded-lg -z-10" />
-                  <div className="relative w-full aspect-square overflow-hidden rounded-lg">
-                    <Image
-                      src="/stacey/2.jpg"
-                      alt="Stacey Elsie Lamptey, Speaker and Growth Strategist"
-                      fill
-                      className="object-cover object-top"
-                      priority
-                      sizes="(max-width: 1024px) 90vw, 480px"
-                    />
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* ── About Teaser ─────────────────────────────────── */}
-        <section className="bg-[#fafafa] py-24 lg:py-32">
-          <div className="max-w-7xl mx-auto px-6 lg:px-12">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center">
-              {/* Image: 4:3 */}
-              <AnimateOnScroll animation="slide-right" className="relative">
-                <div className="relative w-full aspect-[4/3] overflow-hidden rounded-lg">
-                  <Image
-                    src="/stacey/1.jpg"
-                    alt="Stacey Elsie Lamptey"
-                    fill
-                    className="object-cover object-center"
-                    sizes="(max-width: 1024px) 90vw, 50vw"
+            <motion.div
+              className="mt-8 flex flex-wrap gap-4"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{
+                duration: 0.8,
+                ease: [0.16, 1, 0.3, 1],
+                delay: 0.85,
+              }}
+            >
+              <Link href="/contact" className="btn-primary">
+                Book Stacey
+                <svg
+                  viewBox="0 0 20 20"
+                  fill="currentColor"
+                  className="w-4 h-4"
+                >
+                  <path
+                    fillRule="evenodd"
+                    d="M3 10a.75.75 0 0 1 .75-.75h10.638L10.23 5.29a.75.75 0 1 1 1.04-1.08l5.5 5.25a.75.75 0 0 1 0 1.08l-5.5 5.25a.75.75 0 1 1-1.04-1.08l4.158-3.96H3.75A.75.75 0 0 1 3 10Z"
+                    clipRule="evenodd"
                   />
-                </div>
-                {/* Accent */}
-                <div className="absolute -top-4 -left-4 w-24 h-24 border-2 border-golden-chestnut-500 rounded-lg opacity-40 -z-10" />
-              </AnimateOnScroll>
-
-              {/* Text */}
-              <div className="flex flex-col gap-6">
-                <AnimateOnScroll animation="fade-up" delay={50}>
-                  <span className="section-label">About Stacey</span>
-                </AnimateOnScroll>
-
-                <AnimateOnScroll animation="fade-up" delay={150}>
-                  <h2 className="font-heading text-[clamp(2rem,4vw,3rem)] font-bold leading-tight text-[#111111]">
-                    A speaker on{" "}
-                    <span className="text-golden-chestnut-500">
-                      Mindset Mastery
-                    </span>{" "}
-                    and Growth.
-                  </h2>
-                </AnimateOnScroll>
-
-                <AnimateOnScroll animation="fade-up" delay={250}>
-                  <p className="text-base text-[#111111]/65 leading-relaxed">
-                    Stacey Elsie Lamptey is a speaker and growth strategist
-                    focused on identity, faith-based growth, and mindset
-                    development. Through practical and relatable sessions, she
-                    equips audiences to take responsibility for their choices,
-                    build strong personal values, and act with purpose in their
-                    everyday lives.
-                  </p>
-                </AnimateOnScroll>
-
-                <AnimateOnScroll animation="fade-up" delay={350}>
-                  <p className="text-base text-[#111111]/65 leading-relaxed">
-                    Her approach blends an analytical background with honest,
-                    structured frameworks, turning insight into action.
-                  </p>
-                </AnimateOnScroll>
-
-                <AnimateOnScroll animation="fade-up" delay={450}>
-                  <Link href="/about" className="btn-outline self-start mt-2">
-                    Full Profile
-                    <svg
-                      viewBox="0 0 20 20"
-                      fill="currentColor"
-                      className="w-4 h-4"
-                    >
-                      <path
-                        fillRule="evenodd"
-                        d="M3 10a.75.75 0 0 1 .75-.75h10.638L10.23 5.29a.75.75 0 1 1 1.04-1.08l5.5 5.25a.75.75 0 0 1 0 1.08l-5.5 5.25a.75.75 0 1 1-1.04-1.08l4.158-3.96H3.75A.75.75 0 0 1 3 10Z"
-                        clipRule="evenodd"
-                      />
-                    </svg>
-                  </Link>
-                </AnimateOnScroll>
-              </div>
-            </div>
+                </svg>
+              </Link>
+              <Link href="/about" className="btn-outline-light">
+                Learn More
+              </Link>
+            </motion.div>
           </div>
+
+          {/* Bottom-right role badges */}
+          <motion.div
+            className="absolute bottom-8 right-6 lg:right-12 z-10 flex gap-2 flex-wrap justify-end"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.8, delay: 1.1 }}
+          >
+            {["Speaker", "Growth Strategist"].map((title) => (
+              <span
+                key={title}
+                className="inline-block px-3 py-1 border border-white/20 rounded-full text-xs font-semibold font-heading text-white/60 tracking-wide backdrop-blur-sm"
+              >
+                {title}
+              </span>
+            ))}
+          </motion.div>
         </section>
 
         {/* ── Roles Ticker ─────────────────────────────────── */}
-        <div className="bg-white py-10 border-y border-gray-100 overflow-hidden">
+        <div className="bg-platinum-900 py-8 border-y border-platinum-800 overflow-hidden">
           <div className="marquee-track select-none">
             {tickerItems.map((role, i) => (
               <span
                 key={i}
-                className="flex items-center gap-6 px-6 text-sm font-semibold font-heading uppercase tracking-[0.2em] text-[#111111]/30 whitespace-nowrap"
+                className="flex items-center gap-6 px-6 text-sm font-semibold font-heading uppercase tracking-[0.2em] text-platinum-400 whitespace-nowrap"
               >
                 {role}
-                <span className="text-golden-chestnut-500 text-base leading-none">
+                <span className="text-golden-earth-500 text-base leading-none">
                   ·
                 </span>
               </span>
@@ -180,58 +140,202 @@ export default function Home() {
           </div>
         </div>
 
-        {/* ── Community ────────────────────────────────────── */}
-        <section className="bg-[#0d0d0d] py-24 lg:py-32 relative overflow-hidden">
-          {/* Subtle background accent */}
-          <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-golden-chestnut-500/5 rounded-full blur-3xl translate-x-1/2 -translate-y-1/2 pointer-events-none" />
+        {/* ── About Teaser: half-and-half ───────────────────── */}
+        <section className="flex flex-col lg:flex-row min-h-[80vh]">
+          {/* Image half */}
+          <motion.div
+            className="relative w-full lg:w-1/2 min-h-[50vh] lg:min-h-full overflow-hidden"
+            initial={{ opacity: 0, x: -40 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
+          >
+            <Image
+              src="/stacey/2.jpg"
+              alt="Stacey Elsie Lamptey"
+              fill
+              className="object-cover object-center"
+              sizes="(max-width: 1024px) 100vw, 50vw"
+            />
+            <div className="absolute bottom-0 left-0 w-1 h-24 bg-golden-earth-500" />
+          </motion.div>
 
-          <div className="max-w-7xl mx-auto px-6 lg:px-12 relative">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center">
-              {/* Text */}
-              <div className="flex flex-col gap-8">
-                <AnimateOnScroll animation="fade-up">
-                  <span className="section-label">Community</span>
-                </AnimateOnScroll>
+          {/* Text half */}
+          <div className="w-full lg:w-1/2 bg-white flex items-center">
+            <div className="px-10 lg:px-16 xl:px-20 py-16 lg:py-24 flex flex-col gap-6 max-w-xl">
+              <motion.span
+                className="section-label"
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: 0.1 }}
+              >
+                About Stacey
+              </motion.span>
 
-                <AnimateOnScroll animation="fade-up" delay={100}>
-                  <h2 className="font-heading text-[clamp(2rem,4vw,3.25rem)] font-bold leading-tight text-white">
-                    A New Kind of{" "}
-                    <span className="text-golden-chestnut-500">Community</span>
-                  </h2>
-                </AnimateOnScroll>
+              <motion.h2
+                className="font-heading text-[clamp(2rem,4vw,3rem)] font-bold leading-tight text-platinum-900"
+                initial={{ opacity: 0, y: 24 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{
+                  duration: 0.8,
+                  ease: [0.16, 1, 0.3, 1],
+                  delay: 0.2,
+                }}
+              >
+                A speaker on{" "}
+                <span className="text-golden-earth-500">Mindset Mastery</span>{" "}
+                and Growth.
+              </motion.h2>
 
-                <AnimateOnScroll animation="fade-up" delay={200}>
-                  <p className="text-base text-white/55 leading-relaxed">
-                    A space built for people who are done with surface-level
-                    living. People who want to think deeper, grow faster, and
-                    move with intention.
-                  </p>
-                  <p className="text-base text-white/55 leading-relaxed mt-4">
-                    A community rooted in mindset, anchored in faith, and
-                    oriented toward real, measurable growth. This is a gathering
-                    of people who take their inner work seriously and understand
-                    that transformation is not a moment. It is a lifestyle.
-                  </p>
-                </AnimateOnScroll>
+              <motion.p
+                className="text-base text-platinum-600 leading-relaxed"
+                initial={{ opacity: 0, y: 16 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{
+                  duration: 0.8,
+                  ease: [0.16, 1, 0.3, 1],
+                  delay: 0.3,
+                }}
+              >
+                Stacey Elsie Lamptey is a speaker and growth strategist focused
+                on identity, faith-based growth, and mindset development.
+                Through practical and relatable sessions, she equips audiences
+                to take responsibility for their choices, build strong personal
+                values, and act with purpose in their everyday lives.
+              </motion.p>
 
-                <AnimateOnScroll animation="fade-up" delay={300}>
-                  <EmailSignup />
-                </AnimateOnScroll>
-              </div>
+              <motion.p
+                className="text-base text-platinum-600 leading-relaxed"
+                initial={{ opacity: 0, y: 16 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{
+                  duration: 0.8,
+                  ease: [0.16, 1, 0.3, 1],
+                  delay: 0.4,
+                }}
+              >
+                Her approach blends an analytical background with honest,
+                structured frameworks, turning insight into action.
+              </motion.p>
 
-              {/* Image: 4:3 */}
-              <AnimateOnScroll animation="slide-left" delay={200}>
-                <div className="relative w-full aspect-[4/3] overflow-hidden rounded-lg">
-                  <Image
-                    src="/stacey/3.jpg"
-                    alt="Stacey Elsie speaking"
-                    fill
-                    className="object-cover object-center"
-                    sizes="(max-width: 1024px) 90vw, 50vw"
-                  />
-                  <div className="absolute inset-0 bg-[#0d0d0d]/20" />
-                </div>
-              </AnimateOnScroll>
+              <motion.div
+                initial={{ opacity: 0, y: 16 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{
+                  duration: 0.8,
+                  ease: [0.16, 1, 0.3, 1],
+                  delay: 0.5,
+                }}
+              >
+                <Link href="/about" className="btn-outline self-start mt-2">
+                  Full Profile
+                  <svg
+                    viewBox="0 0 20 20"
+                    fill="currentColor"
+                    className="w-4 h-4"
+                  >
+                    <path
+                      fillRule="evenodd"
+                      d="M3 10a.75.75 0 0 1 .75-.75h10.638L10.23 5.29a.75.75 0 1 1 1.04-1.08l5.5 5.25a.75.75 0 0 1 0 1.08l-5.5 5.25a.75.75 0 1 1-1.04-1.08l4.158-3.96H3.75A.75.75 0 0 1 3 10Z"
+                      clipRule="evenodd"
+                    />
+                  </svg>
+                </Link>
+              </motion.div>
+            </div>
+          </div>
+        </section>
+
+        {/* ── Community: half-and-half reversed ────────────── */}
+        <section className="flex flex-col lg:flex-row-reverse min-h-[80vh]">
+          {/* Image half */}
+          <motion.div
+            className="relative w-full lg:w-1/2 min-h-[50vh] lg:min-h-full overflow-hidden"
+            initial={{ opacity: 0, x: 40 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
+          >
+            <Image
+              src="/stacey/3.jpg"
+              alt="Stacey Elsie speaking"
+              fill
+              className="object-cover object-center"
+              sizes="(max-width: 1024px) 100vw, 50vw"
+            />
+            <div className="absolute inset-0 bg-platinum-950/20" />
+            <div className="absolute top-0 right-0 w-1 h-24 bg-golden-earth-500" />
+          </motion.div>
+
+          {/* Text half — dark */}
+          <div className="w-full lg:w-1/2 bg-platinum-950 flex items-center relative overflow-hidden">
+            <div className="absolute top-0 left-0 w-[400px] h-[400px] bg-golden-earth-500/5 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2 pointer-events-none" />
+
+            <div className="px-10 lg:px-16 xl:px-20 py-16 lg:py-24 flex flex-col gap-6 max-w-xl relative z-10">
+              <motion.span
+                className="section-label"
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: 0.1 }}
+              >
+                Community
+              </motion.span>
+
+              <motion.h2
+                className="font-heading text-[clamp(2rem,4vw,3.25rem)] font-bold leading-tight text-white"
+                initial={{ opacity: 0, y: 24 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{
+                  duration: 0.8,
+                  ease: [0.16, 1, 0.3, 1],
+                  delay: 0.2,
+                }}
+              >
+                A New Kind of{" "}
+                <span className="text-golden-earth-400">Community</span>
+              </motion.h2>
+
+              <motion.div
+                className="flex flex-col gap-4"
+                initial={{ opacity: 0, y: 16 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{
+                  duration: 0.8,
+                  ease: [0.16, 1, 0.3, 1],
+                  delay: 0.3,
+                }}
+              >
+                <p className="text-base text-iron-grey-300 leading-relaxed">
+                  A space built for people who are done with surface-level
+                  living. People who want to think deeper, grow faster, and move
+                  with intention.
+                </p>
+                <p className="text-base text-iron-grey-300 leading-relaxed">
+                  A community rooted in mindset, anchored in faith, and oriented
+                  toward real, measurable growth.
+                </p>
+              </motion.div>
+
+              <motion.div
+                initial={{ opacity: 0, y: 16 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{
+                  duration: 0.8,
+                  ease: [0.16, 1, 0.3, 1],
+                  delay: 0.4,
+                }}
+              >
+                <EmailSignup />
+              </motion.div>
             </div>
           </div>
         </section>

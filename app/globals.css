@@ -3,20 +3,20 @@
 @theme {
   /* ── Brand Colors ────────────────────────────────── */
 
-  /* Golden Chestnut */
-  --color-golden-chestnut-50: #f8f2ec;
-  --color-golden-chestnut-100: #f1e5da;
-  --color-golden-chestnut-200: #e4cab4;
-  --color-golden-chestnut-300: #d6b08f;
-  --color-golden-chestnut-400: #c99669;
-  --color-golden-chestnut-500: #bb7c44;
-  --color-golden-chestnut-600: #966336;
-  --color-golden-chestnut-700: #704a29;
-  --color-golden-chestnut-800: #4b311b;
-  --color-golden-chestnut-900: #25190e;
-  --color-golden-chestnut-950: #1a1109;
+  /* Golden Earth (primary) */
+  --color-golden-earth-50: #fbf5ea;
+  --color-golden-earth-100: #f7ead4;
+  --color-golden-earth-200: #efd5a9;
+  --color-golden-earth-300: #e7c07e;
+  --color-golden-earth-400: #deab54;
+  --color-golden-earth-500: #d69729;
+  --color-golden-earth-600: #ab7821;
+  --color-golden-earth-700: #815a18;
+  --color-golden-earth-800: #563c10;
+  --color-golden-earth-900: #2b1e08;
+  --color-golden-earth-950: #1e1506;
 
-  /* Pitch Black (Gold tones) */
+  /* Pitch Black (accent gold) */
   --color-pitch-black-50: #fffbe5;
   --color-pitch-black-100: #fff7cc;
   --color-pitch-black-200: #fff099;
@@ -29,44 +29,44 @@
   --color-pitch-black-900: #332b00;
   --color-pitch-black-950: #241e00;
 
-  /* Ghost White (Blue-violet) */
-  --color-ghost-white-50: #e5e5ff;
-  --color-ghost-white-100: #ccccff;
-  --color-ghost-white-200: #9999ff;
-  --color-ghost-white-300: #6666ff;
-  --color-ghost-white-400: #3333ff;
-  --color-ghost-white-500: #0000ff;
-  --color-ghost-white-600: #0000cc;
-  --color-ghost-white-700: #000099;
-  --color-ghost-white-800: #000066;
-  --color-ghost-white-900: #000033;
-  --color-ghost-white-950: #000024;
+  /* Platinum */
+  --color-platinum-50: #f1f2f4;
+  --color-platinum-100: #e3e6e8;
+  --color-platinum-200: #c6ccd2;
+  --color-platinum-300: #aab3bb;
+  --color-platinum-400: #8e99a4;
+  --color-platinum-500: #717f8e;
+  --color-platinum-600: #5b6671;
+  --color-platinum-700: #444c55;
+  --color-platinum-800: #2d3339;
+  --color-platinum-900: #17191c;
+  --color-platinum-950: #101214;
 
-  /* Turquoise Surf */
-  --color-turquoise-surf-50: #e9f8fb;
-  --color-turquoise-surf-100: #d3f2f8;
-  --color-turquoise-surf-200: #a7e4f1;
-  --color-turquoise-surf-300: #7bd7ea;
-  --color-turquoise-surf-400: #50cae2;
-  --color-turquoise-surf-500: #24bddb;
-  --color-turquoise-surf-600: #1d97af;
-  --color-turquoise-surf-700: #157184;
-  --color-turquoise-surf-800: #0e4b58;
-  --color-turquoise-surf-900: #07262c;
-  --color-turquoise-surf-950: #051a1f;
+  /* Light Blue */
+  --color-light-blue-50: #eff4f5;
+  --color-light-blue-100: #e0e9eb;
+  --color-light-blue-200: #c1d3d7;
+  --color-light-blue-300: #a2bec3;
+  --color-light-blue-400: #83a8af;
+  --color-light-blue-500: #63929c;
+  --color-light-blue-600: #50757c;
+  --color-light-blue-700: #3c585d;
+  --color-light-blue-800: #283a3e;
+  --color-light-blue-900: #141d1f;
+  --color-light-blue-950: #0e1416;
 
-  /* Rich Cerulean */
-  --color-rich-cerulean-50: #eef3f7;
-  --color-rich-cerulean-100: #dce7ef;
-  --color-rich-cerulean-200: #b9cfdf;
-  --color-rich-cerulean-300: #96b6cf;
-  --color-rich-cerulean-400: #739ebf;
-  --color-rich-cerulean-500: #5086af;
-  --color-rich-cerulean-600: #406b8c;
-  --color-rich-cerulean-700: #305069;
-  --color-rich-cerulean-800: #203646;
-  --color-rich-cerulean-900: #101b23;
-  --color-rich-cerulean-950: #0b1318;
+  /* Iron Grey */
+  --color-iron-grey-50: #f1f3f4;
+  --color-iron-grey-100: #e3e7e8;
+  --color-iron-grey-200: #c6d0d2;
+  --color-iron-grey-300: #aab8bb;
+  --color-iron-grey-400: #8ea0a4;
+  --color-iron-grey-500: #71898e;
+  --color-iron-grey-600: #5b6d71;
+  --color-iron-grey-700: #445255;
+  --color-iron-grey-800: #2d3739;
+  --color-iron-grey-900: #171b1c;
+  --color-iron-grey-950: #101314;
 
   /* ── Typography ──────────────────────────────────── */
   --font-sans: var(--font-open-sans);
@@ -210,7 +210,7 @@ h6 {
   align-items: center;
   gap: 0.5rem;
   padding: 0.875rem 2rem;
-  background-color: #bb7c44;
+  background-color: #d69729;
   color: #ffffff;
   font-family: var(--font-raleway), system-ui, sans-serif;
   font-weight: 600;
@@ -224,9 +224,9 @@ h6 {
 }
 
 .btn-primary:hover {
-  background-color: #966336;
+  background-color: #ab7821;
   transform: translateY(-1px);
-  box-shadow: 0 8px 24px rgba(187, 124, 68, 0.25);
+  box-shadow: 0 8px 24px rgba(214, 151, 41, 0.3);
 }
 
 .btn-primary:active {
@@ -301,7 +301,7 @@ h6 {
   left: 0;
   width: 0;
   height: 2px;
-  background-color: #bb7c44;
+  background-color: #d69729;
   transition: width 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
@@ -329,7 +329,7 @@ h6 {
   font-weight: 600;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: #bb7c44;
+  color: #d69729;
 }
 
 /* ── Card hover ──────────────────────────────────────── */
