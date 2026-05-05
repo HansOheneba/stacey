@@ -68,7 +68,6 @@ export default function NewsletterWelcome({ email }: NewsletterWelcomeProps) {
               style={{ boxShadow: "0 2px 14px rgba(0,0,0,0.09)" }}
             >
               <Section className="rounded-lg overflow-hidden border border-[#e8e8e8] bg-white">
-
                 {/* Hero image */}
                 <Section className="p-0 m-0">
                   <Img
@@ -114,16 +113,24 @@ export default function NewsletterWelcome({ email }: NewsletterWelcomeProps) {
                   </Text>
                   <Text
                     className="m-0 mt-5"
-                    style={{ color: "#555555", fontSize: "15px", lineHeight: "1.75" }}
+                    style={{
+                      color: "#555555",
+                      fontSize: "15px",
+                      lineHeight: "1.75",
+                    }}
                   >
                     So glad you are here. This is a space for growth, clarity,
-                    and conversations that actually move things forward. You will
-                    hear from us with ideas, tools, and updates built to help you
-                    step further into who you are becoming.
+                    and conversations that actually move things forward. You
+                    will hear from us with ideas, tools, and updates built to
+                    help you step further into who you are becoming.
                   </Text>
                   <Text
                     className="m-0 mt-3"
-                    style={{ color: "#555555", fontSize: "15px", lineHeight: "1.75" }}
+                    style={{
+                      color: "#555555",
+                      fontSize: "15px",
+                      lineHeight: "1.75",
+                    }}
                   >
                     The best place to start is the YouTube channel. Packed with
                     frameworks and honest conversations you can use today.
@@ -192,7 +199,9 @@ export default function NewsletterWelcome({ email }: NewsletterWelcomeProps) {
                           }}
                         >
                           <Row>
-                            <Column style={{ width: "92%", verticalAlign: "top" }}>
+                            <Column
+                              style={{ width: "92%", verticalAlign: "top" }}
+                            >
                               <Text
                                 className="m-0"
                                 style={{
@@ -223,7 +232,10 @@ export default function NewsletterWelcome({ email }: NewsletterWelcomeProps) {
                                 verticalAlign: "middle",
                               }}
                             >
-                              <Text className="m-0" style={{ color: "#d69729", fontSize: "18px" }}>
+                              <Text
+                                className="m-0"
+                                style={{ color: "#d69729", fontSize: "18px" }}
+                              >
                                 →
                               </Text>
                             </Column>
@@ -235,7 +247,9 @@ export default function NewsletterWelcome({ email }: NewsletterWelcomeProps) {
                 </Section>
 
                 {/* Footer */}
-                <Section style={{ borderTop: "1px solid #e8e8e8", padding: "40px" }}>
+                <Section
+                  style={{ borderTop: "1px solid #e8e8e8", padding: "40px" }}
+                >
                   <Text
                     className="m-0"
                     style={{
@@ -256,7 +270,8 @@ export default function NewsletterWelcome({ email }: NewsletterWelcomeProps) {
                         key={s.label}
                         style={{
                           width: "auto",
-                          paddingRight: i < socialLinks.length - 1 ? "20px" : "0",
+                          paddingRight:
+                            i < socialLinks.length - 1 ? "20px" : "0",
                         }}
                       >
                         <Link
@@ -279,7 +294,11 @@ export default function NewsletterWelcome({ email }: NewsletterWelcomeProps) {
                     <Column>
                       <Text
                         className="m-0"
-                        style={{ color: "#bbbbbb", fontSize: "11px", lineHeight: "1.6" }}
+                        style={{
+                          color: "#bbbbbb",
+                          fontSize: "11px",
+                          lineHeight: "1.6",
+                        }}
                       >
                         Accra, Ghana
                       </Text>
@@ -303,7 +322,6 @@ export default function NewsletterWelcome({ email }: NewsletterWelcomeProps) {
                     </Column>
                   </Row>
                 </Section>
-
               </Section>
             </Section>
           </Container>
