@@ -33,13 +33,66 @@ const faqs = [
   },
 ];
 
-const countryCodes = [
-  { code: "+233", label: "GH +233" },
-  { code: "+1", label: "US +1" },
-  { code: "+44", label: "UK +44" },
-  { code: "+234", label: "NG +234" },
-  { code: "+27", label: "ZA +27" },
+// Common dial codes + a broad list sorted by country name
+const dialCodes = [
+  { code: "+233", flag: "🇬🇭", country: "Ghana" },
+  { code: "+234", flag: "🇳🇬", country: "Nigeria" },
+  { code: "+27", flag: "🇿🇦", country: "South Africa" },
+  { code: "+254", flag: "🇰🇪", country: "Kenya" },
+  { code: "+44", flag: "🇬🇧", country: "United Kingdom" },
+  { code: "+1", flag: "🇺🇸", country: "United States" },
+  { code: "+1", flag: "🇨🇦", country: "Canada" },
+  { code: "+61", flag: "🇦🇺", country: "Australia" },
+  { code: "+49", flag: "🇩🇪", country: "Germany" },
+  { code: "+33", flag: "🇫🇷", country: "France" },
+  { code: "+31", flag: "🇳🇱", country: "Netherlands" },
+  { code: "+46", flag: "🇸🇪", country: "Sweden" },
+  { code: "+47", flag: "🇳🇴", country: "Norway" },
+  { code: "+45", flag: "🇩🇰", country: "Denmark" },
+  { code: "+32", flag: "🇧🇪", country: "Belgium" },
+  { code: "+41", flag: "🇨🇭", country: "Switzerland" },
+  { code: "+34", flag: "🇪🇸", country: "Spain" },
+  { code: "+39", flag: "🇮🇹", country: "Italy" },
+  { code: "+351", flag: "🇵🇹", country: "Portugal" },
+  { code: "+48", flag: "🇵🇱", country: "Poland" },
+  { code: "+91", flag: "🇮🇳", country: "India" },
+  { code: "+86", flag: "🇨🇳", country: "China" },
+  { code: "+81", flag: "🇯🇵", country: "Japan" },
+  { code: "+82", flag: "🇰🇷", country: "South Korea" },
+  { code: "+65", flag: "🇸🇬", country: "Singapore" },
+  { code: "+971", flag: "🇦🇪", country: "UAE" },
+  { code: "+966", flag: "🇸🇦", country: "Saudi Arabia" },
+  { code: "+20", flag: "🇪🇬", country: "Egypt" },
+  { code: "+212", flag: "🇲🇦", country: "Morocco" },
+  { code: "+225", flag: "🇨🇮", country: "Côte d'Ivoire" },
+  { code: "+237", flag: "🇨🇲", country: "Cameroon" },
+  { code: "+255", flag: "🇹🇿", country: "Tanzania" },
+  { code: "+256", flag: "🇺🇬", country: "Uganda" },
+  { code: "+260", flag: "🇿🇲", country: "Zambia" },
+  { code: "+263", flag: "🇿🇼", country: "Zimbabwe" },
+  { code: "+55", flag: "🇧🇷", country: "Brazil" },
+  { code: "+52", flag: "🇲🇽", country: "Mexico" },
 ];
+
+const countries = [
+  "Afghanistan", "Albania", "Algeria", "Argentina", "Australia", "Austria",
+  "Belgium", "Bolivia", "Brazil", "Cameroon", "Canada", "Chile", "China",
+  "Colombia", "Côte d'Ivoire", "Croatia", "Czech Republic", "Denmark",
+  "Ecuador", "Egypt", "Ethiopia", "Finland", "France", "Germany", "Ghana",
+  "Greece", "Guatemala", "Hungary", "India", "Indonesia", "Ireland", "Israel",
+  "Italy", "Japan", "Jordan", "Kenya", "Lebanon", "Malaysia", "Mexico",
+  "Morocco", "Mozambique", "Netherlands", "New Zealand", "Nigeria", "Norway",
+  "Pakistan", "Panama", "Peru", "Philippines", "Poland", "Portugal",
+  "Romania", "Rwanda", "Saudi Arabia", "Senegal", "Singapore", "South Africa",
+  "South Korea", "Spain", "Sweden", "Switzerland", "Tanzania", "Thailand",
+  "Tunisia", "Turkey", "UAE", "Uganda", "Ukraine", "United Kingdom",
+  "United States", "Venezuela", "Vietnam", "Zambia", "Zimbabwe",
+];
+
+const inputClass =
+  "px-4 py-3 border border-gray-200 rounded text-sm text-[#111111] placeholder-[#111111]/30 focus:outline-none focus:border-golden-earth-500 transition-colors duration-200 bg-white w-full";
+const labelClass =
+  "text-xs font-semibold text-[#111111]/50 uppercase tracking-wider";
 
 function FAQItem({ q, a }: { q: string; a: string }) {
   const [open, setOpen] = useState(false);
@@ -62,9 +115,7 @@ function FAQItem({ q, a }: { q: string; a: string }) {
         </span>
       </button>
       <div className={`faq-content ${open ? "open" : ""}`}>
-        <p className="text-sm text-[#111111]/60 leading-relaxed pb-5 pr-8">
-          {a}
-        </p>
+        <p className="text-sm text-[#111111]/60 leading-relaxed pb-5 pr-8">{a}</p>
       </div>
     </div>
   );
@@ -73,16 +124,46 @@ function FAQItem({ q, a }: { q: string; a: string }) {
 function ContactForm() {
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
-  const [countryCode, setCountryCode] = useState("+233");
+  const [error, setError] = useState<string | null>(null);
+  const [phoneCode, setPhoneCode] = useState("+233");
+  const [customCode, setCustomCode] = useState("");
+  const [useCustom, setUseCustom] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setLoading(true);
-    // Simulate a brief send delay
-    setTimeout(() => {
-      setLoading(false);
+    setError(null);
+
+    const fd = new FormData(e.currentTarget);
+    const payload = {
+      firstName: fd.get("firstName") as string,
+      lastName: fd.get("lastName") as string,
+      email: fd.get("email") as string,
+      phoneCode: useCustom ? customCode : phoneCode,
+      phone: fd.get("phone") as string,
+      country: fd.get("country") as string,
+      subject: fd.get("subject") as string,
+      message: fd.get("message") as string,
+    };
+
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      });
+
+      if (!res.ok) {
+        const data = await res.json();
+        throw new Error(data.error ?? "Something went wrong.");
+      }
+
       setSubmitted(true);
-    }, 1200);
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "Failed to send. Please try again.");
+    } finally {
+      setLoading(false);
+    }
   };
 
   if (submitted) {
@@ -96,19 +177,12 @@ function ContactForm() {
             strokeWidth="2"
             className="w-8 h-8 text-golden-earth-500"
           >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              d="m4.5 12.75 6 6 9-13.5"
-            />
+            <path strokeLinecap="round" strokeLinejoin="round" d="m4.5 12.75 6 6 9-13.5" />
           </svg>
         </div>
-        <h3 className="font-heading text-xl font-bold text-[#111111]">
-          Message Received
-        </h3>
+        <h3 className="font-heading text-xl font-bold text-[#111111]">Message Received</h3>
         <p className="text-sm text-[#111111]/55 max-w-xs">
-          Thank you for reaching out. We&apos;ll get back to you within 2
-          working days.
+          Thank you for reaching out. We&apos;ll get back to you within 2 working days.
         </p>
         <button
           onClick={() => setSubmitted(false)}
@@ -125,60 +199,65 @@ function ContactForm() {
       {/* Name row */}
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         <div className="flex flex-col gap-1.5">
-          <label className="text-xs font-semibold text-[#111111]/50 uppercase tracking-wider">
+          <label className={labelClass}>
             First Name <span className="text-golden-earth-500">*</span>
           </label>
-          <input
-            type="text"
-            required
-            placeholder="First name"
-            className="px-4 py-3 border border-gray-200 rounded text-sm text-[#111111] placeholder-[#111111]/30 focus:outline-none focus:border-golden-earth-500 transition-colors duration-200"
-          />
+          <input name="firstName" type="text" required placeholder="First name" className={inputClass} />
         </div>
         <div className="flex flex-col gap-1.5">
-          <label className="text-xs font-semibold text-[#111111]/50 uppercase tracking-wider">
+          <label className={labelClass}>
             Last Name <span className="text-golden-earth-500">*</span>
           </label>
-          <input
-            type="text"
-            required
-            placeholder="Last name"
-            className="px-4 py-3 border border-gray-200 rounded text-sm text-[#111111] placeholder-[#111111]/30 focus:outline-none focus:border-golden-earth-500 transition-colors duration-200"
-          />
+          <input name="lastName" type="text" required placeholder="Last name" className={inputClass} />
         </div>
       </div>
 
       {/* Email */}
       <div className="flex flex-col gap-1.5">
-        <label className="text-xs font-semibold text-[#111111]/50 uppercase tracking-wider">
+        <label className={labelClass}>
           Email <span className="text-golden-earth-500">*</span>
         </label>
-        <input
-          type="email"
-          required
-          placeholder="your@email.com"
-          className="px-4 py-3 border border-gray-200 rounded text-sm text-[#111111] placeholder-[#111111]/30 focus:outline-none focus:border-golden-earth-500 transition-colors duration-200"
-        />
+        <input name="email" type="email" required placeholder="your@email.com" className={inputClass} />
       </div>
 
       {/* Phone */}
       <div className="flex flex-col gap-1.5">
-        <label className="text-xs font-semibold text-[#111111]/50 uppercase tracking-wider">
-          Phone
-        </label>
-        <div className="flex gap-2">
-          <select
-            value={countryCode}
-            onChange={(e) => setCountryCode(e.target.value)}
-            className="px-3 py-3 border border-gray-200 rounded text-sm text-[#111111] focus:outline-none focus:border-golden-earth-500 transition-colors duration-200 bg-white"
+        <label className={labelClass}>Phone</label>
+        <div className="flex gap-2 items-stretch">
+          {useCustom ? (
+            <div className="flex items-center border border-gray-200 rounded px-3 gap-1 focus-within:border-golden-earth-500 transition-colors duration-200">
+              <span className="text-sm text-[#111111]/40">+</span>
+              <input
+                type="text"
+                value={customCode.replace(/^\+/, "")}
+                onChange={(e) => setCustomCode("+" + e.target.value.replace(/\D/g, ""))}
+                placeholder="Code"
+                maxLength={5}
+                className="w-14 py-3 text-sm text-[#111111] focus:outline-none bg-transparent"
+              />
+            </div>
+          ) : (
+            <select
+              value={phoneCode}
+              onChange={(e) => setPhoneCode(e.target.value)}
+              className="border border-gray-200 rounded px-2 py-3 text-sm text-[#111111] focus:outline-none focus:border-golden-earth-500 transition-colors duration-200 bg-white"
+            >
+              {dialCodes.map(({ code, flag, country }) => (
+                <option key={`${code}-${country}`} value={code}>
+                  {flag} {country} {code}
+                </option>
+              ))}
+            </select>
+          )}
+          <button
+            type="button"
+            onClick={() => setUseCustom((p) => !p)}
+            className="text-xs text-golden-earth-600 hover:text-golden-earth-700 whitespace-nowrap px-1 transition-colors duration-200"
           >
-            {countryCodes.map(({ code, label }) => (
-              <option key={code} value={code}>
-                {label}
-              </option>
-            ))}
-          </select>
+            {useCustom ? "Use list" : "Other"}
+          </button>
           <input
+            name="phone"
             type="tel"
             placeholder="Phone number"
             className="flex-1 px-4 py-3 border border-gray-200 rounded text-sm text-[#111111] placeholder-[#111111]/30 focus:outline-none focus:border-golden-earth-500 transition-colors duration-200"
@@ -186,36 +265,49 @@ function ContactForm() {
         </div>
       </div>
 
+      {/* Country */}
+      <div className="flex flex-col gap-1.5">
+        <label className={labelClass}>Country</label>
+        <select name="country" defaultValue="" className={inputClass}>
+          <option value="" disabled>Select your country</option>
+          {countries.map((c) => (
+            <option key={c} value={c}>{c}</option>
+          ))}
+        </select>
+      </div>
+
       {/* Subject */}
       <div className="flex flex-col gap-1.5">
-        <label className="text-xs font-semibold text-[#111111]/50 uppercase tracking-wider">
+        <label className={labelClass}>
           Subject <span className="text-golden-earth-500">*</span>
         </label>
-        <select
-          required
-          defaultValue=""
-          className="px-4 py-3 border border-gray-200 rounded text-sm text-[#111111] focus:outline-none focus:border-golden-earth-500 transition-colors duration-200 bg-white"
-        >
-          <option value="" disabled>
-            Select an option
-          </option>
-          <option value="general">General Enquiry</option>
-          <option value="speaking">Speaking Engagement</option>
+        <select name="subject" required defaultValue="" className={inputClass}>
+          <option value="" disabled>Select an option</option>
+          <option value="General Enquiry">General Enquiry</option>
+          <option value="Speaking Engagement">Speaking Engagement</option>
+          <option value="Coaching">Coaching</option>
+          <option value="Partnership">Partnership</option>
+          <option value="Other">Other</option>
         </select>
       </div>
 
       {/* Message */}
       <div className="flex flex-col gap-1.5">
-        <label className="text-xs font-semibold text-[#111111]/50 uppercase tracking-wider">
+        <label className={labelClass}>
           Message <span className="text-golden-earth-500">*</span>
         </label>
         <textarea
+          name="message"
           required
           rows={5}
           placeholder="Tell us about your event or enquiry..."
-          className="px-4 py-3 border border-gray-200 rounded text-sm text-[#111111] placeholder-[#111111]/30 focus:outline-none focus:border-golden-earth-500 transition-colors duration-200 resize-none"
+          className={`${inputClass} resize-none`}
         />
       </div>
+
+      {error && (
+        <p className="text-sm text-red-600 bg-red-50 px-4 py-3 rounded">{error}</p>
+      )}
 
       <button
         type="submit"
@@ -224,24 +316,9 @@ function ContactForm() {
       >
         {loading ? (
           <>
-            <svg
-              className="w-4 h-4 animate-spin"
-              viewBox="0 0 24 24"
-              fill="none"
-            >
-              <circle
-                className="opacity-25"
-                cx="12"
-                cy="12"
-                r="10"
-                stroke="currentColor"
-                strokeWidth="4"
-              />
-              <path
-                className="opacity-75"
-                fill="currentColor"
-                d="M4 12a8 8 0 0 1 8-8V0C5.373 0 0 5.373 0 12h4z"
-              />
+            <svg className="w-4 h-4 animate-spin" viewBox="0 0 24 24" fill="none">
+              <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
+              <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 0 1 8-8V0C5.373 0 0 5.373 0 12h4z" />
             </svg>
             Sending...
           </>
@@ -249,11 +326,7 @@ function ContactForm() {
           <>
             Submit
             <svg viewBox="0 0 20 20" fill="currentColor" className="w-4 h-4">
-              <path
-                fillRule="evenodd"
-                d="M3 10a.75.75 0 0 1 .75-.75h10.638L10.23 5.29a.75.75 0 1 1 1.04-1.08l5.5 5.25a.75.75 0 0 1 0 1.08l-5.5 5.25a.75.75 0 1 1-1.04-1.08l4.158-3.96H3.75A.75.75 0 0 1 3 10Z"
-                clipRule="evenodd"
-              />
+              <path fillRule="evenodd" d="M3 10a.75.75 0 0 1 .75-.75h10.638L10.23 5.29a.75.75 0 1 1 1.04-1.08l5.5 5.25a.75.75 0 0 1 0 1.08l-5.5 5.25a.75.75 0 1 1-1.04-1.08l4.158-3.96H3.75A.75.75 0 0 1 3 10Z" clipRule="evenodd" />
             </svg>
           </>
         )}
@@ -285,7 +358,6 @@ export default function ContactPage() {
                 </p>
               </div>
 
-              {/* Image: 1:1 square */}
               <div className="relative w-full max-w-sm mx-auto lg:mx-0 lg:ml-auto">
                 <div className="relative w-full aspect-square overflow-hidden rounded-lg">
                   <Image
@@ -306,7 +378,6 @@ export default function ContactPage() {
         <section className="bg-white py-20 lg:py-28">
           <div className="max-w-7xl mx-auto px-6 lg:px-12">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24">
-              {/* Form */}
               <AnimateOnScroll animation="fade-up">
                 <div>
                   <h2 className="font-heading text-2xl font-bold text-[#111111] mb-8">
@@ -316,7 +387,6 @@ export default function ContactPage() {
                 </div>
               </AnimateOnScroll>
 
-              {/* FAQs */}
               <AnimateOnScroll animation="fade-up" delay={150}>
                 <div>
                   <h2 className="font-heading text-2xl font-bold text-[#111111] mb-8">
