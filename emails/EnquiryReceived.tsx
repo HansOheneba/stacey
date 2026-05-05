@@ -43,7 +43,7 @@ export default function EnquiryReceived({
           style={{ fontFamily: "'Open Sans', Arial, sans-serif" }}
         >
           <Preview>
-            Your message has been received. We will be in touch shortly.
+            Your message has been received. I will be in touch shortly.
           </Preview>
           <Container className="mx-auto max-w-[640px] px-4 pt-14 pb-8">
             <Section
@@ -51,7 +51,6 @@ export default function EnquiryReceived({
               style={{ boxShadow: "0 2px 14px rgba(0,0,0,0.09)" }}
             >
               <Section className="rounded-lg overflow-hidden border border-[#e8e8e8] bg-white">
-
                 {/* Hero image */}
                 <Section className="p-0 m-0">
                   <Img
@@ -97,12 +96,16 @@ export default function EnquiryReceived({
                   </Text>
                   <Text
                     className="m-0 mt-5"
-                    style={{ color: "#555555", fontSize: "15px", lineHeight: "1.75" }}
+                    style={{
+                      color: "#555555",
+                      fontSize: "15px",
+                      lineHeight: "1.75",
+                    }}
                   >
                     Your message about{" "}
                     <strong style={{ color: "#0d0d0d" }}>{subject}</strong> has
-                    landed safely. Stacey or a member of the team will get back
-                    to you within 2 working days from{" "}
+                    landed safely. I will get back to you within 2 working days
+                    from{" "}
                     <Link
                       href="mailto:stacey.elsie.lamptey@gmail.com"
                       style={{ color: "#d69729", textDecoration: "underline" }}
@@ -113,10 +116,14 @@ export default function EnquiryReceived({
                   </Text>
                   <Text
                     className="m-0 mt-3"
-                    style={{ color: "#555555", fontSize: "15px", lineHeight: "1.75" }}
+                    style={{
+                      color: "#555555",
+                      fontSize: "15px",
+                      lineHeight: "1.75",
+                    }}
                   >
-                    While you wait, the YouTube channel is the best place to get
-                    a feel for how Stacey thinks and the kind of work she does.
+                    While you wait, my YouTube channel is the best place to get
+                    a feel for how I think and the kind of work I do.
                   </Text>
                   <Section className="mt-9 text-left">
                     <Button
@@ -171,7 +178,7 @@ export default function EnquiryReceived({
                       {
                         title: "Your message is reviewed",
                         description:
-                          "Every enquiry is read carefully. Stacey or her team will review your message and determine the best next step.",
+                          "Every message is read carefully. I review each one personally and will determine the best next step.",
                       },
                       {
                         title: "You hear back within 2 working days",
@@ -181,7 +188,7 @@ export default function EnquiryReceived({
                       {
                         title: "A conversation begins",
                         description:
-                          "If there is a good fit, you will be invited to discuss further. Either way, you will always receive a response.",
+                          "If there is a good fit, I will reach out to discuss further. Either way, you will always hear back from me.",
                       },
                     ].map((item, idx) => (
                       <Section
@@ -193,7 +200,9 @@ export default function EnquiryReceived({
                         }}
                       >
                         <Row>
-                          <Column style={{ width: "92%", verticalAlign: "top" }}>
+                          <Column
+                            style={{ width: "92%", verticalAlign: "top" }}
+                          >
                             <Text
                               className="m-0"
                               style={{
@@ -224,7 +233,10 @@ export default function EnquiryReceived({
                               verticalAlign: "middle",
                             }}
                           >
-                            <Text className="m-0" style={{ color: "#d69729", fontSize: "18px" }}>
+                            <Text
+                              className="m-0"
+                              style={{ color: "#d69729", fontSize: "18px" }}
+                            >
                               →
                             </Text>
                           </Column>
@@ -235,7 +247,9 @@ export default function EnquiryReceived({
                 </Section>
 
                 {/* Footer */}
-                <Section style={{ borderTop: "1px solid #e8e8e8", padding: "40px" }}>
+                <Section
+                  style={{ borderTop: "1px solid #e8e8e8", padding: "40px" }}
+                >
                   <Text
                     className="m-0"
                     style={{
@@ -245,9 +259,9 @@ export default function EnquiryReceived({
                       maxWidth: "340px",
                     }}
                   >
-                    Stacey Elsie Lamptey is a speaker, growth strategist, and
-                    community builder working with individuals and organisations
-                    across Africa and beyond.
+                    I am a speaker, growth strategist, and community builder. I
+                    work with individuals and organisations across Africa and
+                    beyond.
                   </Text>
 
                   <Row align="left" style={{ marginTop: "24px" }}>
@@ -256,7 +270,8 @@ export default function EnquiryReceived({
                         key={s.label}
                         style={{
                           width: "auto",
-                          paddingRight: i < socialLinks.length - 1 ? "20px" : "0",
+                          paddingRight:
+                            i < socialLinks.length - 1 ? "20px" : "0",
                         }}
                       >
                         <Link
@@ -279,7 +294,11 @@ export default function EnquiryReceived({
                     <Column>
                       <Text
                         className="m-0"
-                        style={{ color: "#bbbbbb", fontSize: "11px", lineHeight: "1.6" }}
+                        style={{
+                          color: "#bbbbbb",
+                          fontSize: "11px",
+                          lineHeight: "1.6",
+                        }}
                       >
                         Accra, Ghana
                       </Text>
@@ -303,7 +322,6 @@ export default function EnquiryReceived({
                     </Column>
                   </Row>
                 </Section>
-
               </Section>
             </Section>
           </Container>

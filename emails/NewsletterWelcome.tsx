@@ -61,7 +61,7 @@ export default function NewsletterWelcome({ email }: NewsletterWelcomeProps) {
           className="m-0 p-0 bg-[#f5f5f4]"
           style={{ fontFamily: "'Open Sans', Arial, sans-serif" }}
         >
-          <Preview>You are in. Welcome to the community.</Preview>
+          <Preview>You are in. So glad to have you here.</Preview>
           <Container className="mx-auto max-w-[640px] px-4 pt-14 pb-8">
             <Section
               className="rounded-lg overflow-hidden"
@@ -132,8 +132,8 @@ export default function NewsletterWelcome({ email }: NewsletterWelcomeProps) {
                       lineHeight: "1.75",
                     }}
                   >
-                    The best place to start is the YouTube channel. Packed with
-                    frameworks and honest conversations you can use today.
+                    The best place to start is my YouTube channel. It is packed
+                    with frameworks and honest conversations you can use today.
                   </Text>
                   <Section className="mt-9 text-left">
                     <Button
@@ -180,8 +180,8 @@ export default function NewsletterWelcome({ email }: NewsletterWelcomeProps) {
                         maxWidth: "460px",
                       }}
                     >
-                      A few places to connect, learn, and stay close to
-                      everything Stacey is building.
+                      A few places where you can find me and stay close to
+                      everything I am building.
                     </Text>
                   </Section>
                   <Section className="px-6 pt-10">
@@ -259,9 +259,9 @@ export default function NewsletterWelcome({ email }: NewsletterWelcomeProps) {
                       maxWidth: "340px",
                     }}
                   >
-                    Stacey Elsie Lamptey is a speaker, growth strategist, and
-                    community builder working with individuals and organisations
-                    across Africa and beyond.
+                    I am a speaker, growth strategist, and community builder. I
+                    work with individuals and organisations across Africa and
+                    beyond.
                   </Text>
 
                   <Row align="left" style={{ marginTop: "24px" }}>
