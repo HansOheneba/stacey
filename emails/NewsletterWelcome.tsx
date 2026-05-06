@@ -42,10 +42,26 @@ const resources: ResourceItem[] = [
 ];
 
 const socialLinks = [
-  { label: "YouTube", href: YOUTUBE_URL },
-  { label: "Instagram", href: "https://instagram.com/staceyelsie" },
-  { label: "LinkedIn", href: "https://linkedin.com/in/staceyelsie" },
-  { label: "X", href: "https://twitter.com/staceyelsie" },
+  {
+    label: "YouTube",
+    href: YOUTUBE_URL,
+    icon: "https://cdn.simpleicons.org/youtube/d69729",
+  },
+  {
+    label: "Instagram",
+    href: "https://instagram.com/staceyelsie",
+    icon: "https://cdn.simpleicons.org/instagram/d69729",
+  },
+  {
+    label: "LinkedIn",
+    href: "https://linkedin.com/in/staceyelsie",
+    icon: "https://cdn.simpleicons.org/linkedin/d69729",
+  },
+  {
+    label: "X",
+    href: "https://twitter.com/staceyelsie",
+    icon: "https://cdn.simpleicons.org/x/d69729",
+  },
 ];
 
 interface NewsletterWelcomeProps {
@@ -271,20 +287,20 @@ export default function NewsletterWelcome({ email }: NewsletterWelcomeProps) {
                         style={{
                           width: "auto",
                           paddingRight:
-                            i < socialLinks.length - 1 ? "20px" : "0",
+                            i < socialLinks.length - 1 ? "16px" : "0",
                         }}
                       >
                         <Link
                           href={s.href}
-                          style={{
-                            color: "#d69729",
-                            fontSize: "12px",
-                            fontWeight: 700,
-                            textDecoration: "none",
-                            letterSpacing: "0.05em",
-                          }}
+                          style={{ textDecoration: "none", display: "block" }}
                         >
-                          {s.label}
+                          <Img
+                            src={s.icon}
+                            alt={s.label}
+                            width={22}
+                            height={22}
+                            style={{ display: "block" }}
+                          />
                         </Link>
                       </Column>
                     ))}
