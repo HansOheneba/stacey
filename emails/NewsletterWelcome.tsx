@@ -30,14 +30,14 @@ const resources: ResourceItem[] = [
   {
     title: "Instagram",
     description:
-      "Daily prompts, behind-the-scenes content, and community conversations. Follow along at @staceyelsie.",
-    href: "https://instagram.com/staceyelsie",
+      "Daily prompts, behind-the-scenes content, and community conversations. Follow along at @stacey_elsie_.",
+    href: "https://www.instagram.com/stacey_elsie_/",
   },
   {
     title: "LinkedIn",
     description:
       "Speaker announcements, long-form thinking on growth, and professional insights. Connect there.",
-    href: "https://linkedin.com/in/staceyelsie",
+    href: "https://www.linkedin.com/in/stacey-elsie-lamptey-966b901b4/",
   },
 ];
 
@@ -49,18 +49,18 @@ const socialLinks = [
   },
   {
     label: "Instagram",
-    href: "https://instagram.com/staceyelsie",
+    href: "https://www.instagram.com/stacey_elsie_/",
     icon: "https://cdn.simpleicons.org/instagram/d69729",
   },
   {
     label: "LinkedIn",
-    href: "https://linkedin.com/in/staceyelsie",
+    href: "https://www.linkedin.com/in/stacey-elsie-lamptey-966b901b4/",
     icon: "https://cdn.simpleicons.org/linkedin/d69729",
   },
   {
-    label: "X",
-    href: "https://twitter.com/staceyelsie",
-    icon: "https://cdn.simpleicons.org/x/d69729",
+    label: "TikTok",
+    href: "https://www.tiktok.com/@stacey_elsie",
+    icon: "https://cdn.simpleicons.org/tiktok/d69729",
   },
 ];
 
